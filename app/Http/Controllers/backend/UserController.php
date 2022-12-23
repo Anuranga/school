@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function UserView(){
         #alldata = User::all();
-        $data['alldata'] = User::all();
+        $data['allData'] = User::all();
         return view('backend.user.view_user', $data);
     }
 }
