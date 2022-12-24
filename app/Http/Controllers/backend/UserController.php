@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -42,5 +43,21 @@ class UserController extends Controller
     public function UserEdit($id){
         $editData = User::find($id);
         return view('backend.user.edit_user', compact('editData'));
+    }
+
+    public function UserUpdate(Request $request, $id){
+
+        $data = User::find($id);
+        $data->usertype = $request->usertype;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->save();
+
+        $notification = array(
+            'message' => 'User Updated Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->route('user.view')->with($notification);
     }
 }

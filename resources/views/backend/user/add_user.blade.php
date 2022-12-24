@@ -24,7 +24,7 @@
                                         <div class="controls">
                                             <select name="usertype" id="usertype" required="" class="form-control">
                                                 <option value="" selected="" disabled="">Select Role</option>
-                                                <option value="admin">Admin</option>
+                                                <option value="Admin">Admin</option>
                                                 <option value="User">User</option>
                                             </select>
                                         </div>

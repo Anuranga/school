@@ -12,7 +12,7 @@
             <div class="box-body">
                 <div class="row">
                     <div class="col">
-                        <form method="post" action="{{route('user.store')}}">
+                        <form method="post" action="{{route('user.update', $editData->id)}}">
                             @csrf
                             <div class="row">
                                 <div class="col-12">
@@ -23,7 +23,7 @@
                                         <div class="controls">
                                             <select name="usertype" id="usertype" required="" class="form-control">
                                                 <option value="" selected="" disabled="">Select Role</option>
-                                                <option value="admin" {{($editData->usertype == 'Admin' ? 'selected' : '')}}>Admin</option>
+                                                <option value="Admin" {{($editData->usertype == 'Admin' ? 'selected' : '')}}>Admin</option>
                                                 <option value="User" {{($editData->usertype == 'User' ? 'selected' : '')}}>User</option>
                                             </select>
                                         </div>
