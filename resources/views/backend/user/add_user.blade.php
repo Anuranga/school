@@ -13,7 +13,8 @@
             <div class="box-body">
                 <div class="row">
                     <div class="col">
-                        <form novalidate="">
+                        <form method="post" action="{{route('user.store')}}">
+                            @csrf
                             <div class="row">
                                 <div class="col-12">
                                 <div class="row">
@@ -24,7 +25,7 @@
                                             <select name="usertype" id="usertype" required="" class="form-control">
                                                 <option value="" selected="" disabled="">Select Role</option>
                                                 <option value="admin">Admin</option>
-                                                <option value="user">User</option>
+                                                <option value="User">User</option>
                                             </select>
                                         </div>
                                     </div>
@@ -33,7 +34,7 @@
                                         <div class="form-group">
                                             <h5>User Name <span class="text-danger">*</span></h5>
                                             <div class="controls">
-                                                <input type="text" id="username" name="username" class="form-control" required="">
+                                                <input type="text" id="name" name="name" class="form-control" required="">
                                             </div>
                                         </div>
                                     </div>
