@@ -13,7 +13,7 @@
                 <div class="box-body">
                     <div class="row">
     <div class="col">
-<form method="post" action="{{route('user.update', $editData->id)}}">
+<form method="post" action="{{route('profile.store')}}" enctype="multipart/form-data">
     @csrf
     <div class="row">
     <div class="col-12">
@@ -23,7 +23,7 @@
                 <div class="form-group">
                     <h5>User Name <span class="text-danger">*</span></h5>
                     <div class="controls">
-                        <input type="text" id="name" value="{{$editData->name}}" name="email" class="form-control" required="">
+                        <input type="text" id="name" value="{{$editData->name}}" name="name" class="form-control" required="">
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                 <div class="form-group">
                     <h5>User Mobile <span class="text-danger">*</span></h5>
                     <div class="controls">
-                        <input type="text" id="mobile" value="{{$editData->mobile}}" name="email" class="form-control" required="">
+                        <input type="text" id="mobile" value="{{$editData->mobile}}" name="mobile" class="form-control" required="">
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                 <div class="form-group">
                     <h5>User Address <span class="text-danger">*</span></h5>
                     <div class="controls">
-                        <input type="text" id="address" value="{{$editData->address}}" name="email" class="form-control" required="">
+                        <input type="text" id="address" value="{{$editData->address}}" name="address" class="form-control" required="">
                     </div>
                 </div>
             </div>
@@ -61,10 +61,10 @@
                 <div class="form-group">
                     <h5>User Gender <span class="text-danger">*</span></h5>
                     <div class="controls">
-                        <select name="usertype" id="usertype" required="" class="form-control">
-                            <option value="" selected="" disabled="">Select Role</option>
-                            <option value="Male" {{($editData->usertype == 'Male' ? 'selected' : '')}}>Male</option>
-                            <option value="Female" {{($editData->usertype == 'Female' ? 'selected' : '')}}>Female</option>
+                        <select name="gender" id="gender" required="" class="form-control">
+                            <option value="" selected="" disabled="">Select Gender</option>
+                            <option value="Male" {{($editData->gender == 'Male' ? 'selected' : '')}}>Male</option>
+                            <option value="Female" {{($editData->gender == 'Female' ? 'selected' : '')}}>Female</option>
                         </select>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
             <div class="form-group">
                 <h5>Profile Image <span class="text-danger">*</span></h5>
                 <div class="controls">
-                    <input type="file" id="image" name="image" value="{{$editData->name}}" class="form-control">
+                    <input type="file" id="image" name="image" class="form-control">
                 </div>
             </div>
                 <div class="form-group">
