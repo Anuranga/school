@@ -35,9 +35,6 @@ class FeeAmountController extends Controller
                 $fee_amount->save();
             }
         }
-        /*$validatedData = $request->validate([
-            'name' => 'required | unique:fee_categories'
-        ]);*/
 
         $notification = array(
             'message' => 'Fee Amount Inserted Successfully',
@@ -47,25 +44,41 @@ class FeeAmountController extends Controller
         return redirect()->route('fee.amount.view')->with($notification);
     }
 
-    public function FeeAmountEdit($id){
-        $editData = FeeCategoryAmount::find($id);
+    public function FeeAmountEdit($fee_category_id){
+        $data['editData'] = FeeCategoryAmount::where('fee_category_id', $fee_category_id)->orderBy('class_id', 'asc')
+        ->get();
 
-        return view('backend.setup.fee_amount.edit_fee_amount', compact('editData'));
+        $data['fee_categories'] = FeeCategory::all();
+        $data['classes'] = StudentClass::all();
+
+        return view('backend.setup.fee_amount.edit_fee_amount', $data);
     }
 
-    public function FeeAmountUpdate(Request $request, $id): \Illuminate\Http\RedirectResponse
+    public function FeeAmountUpdate(Request $request, $fee_category_id): \Illuminate\Http\RedirectResponse
     {
-        $data = FeeCategoryAmount::find($id);
+        if($request->class_id == NULL){
 
-        $validatedData = $request->validate([
-            'name' => 'required | unique:fee_categories'
-        ]);
+            $notification = array(
+                'message' => 'Sorry You do not select any class amount',
+                'alert-type' => 'error'
+            );
 
-        $data->name = $request->name;
-        $data->save();
+            return redirect()->route('fee.amount.edit', $fee_category_id)->with($notification);
+        } else {
+            $countClass = count($request->class_id);
+            FeeCategoryAmount::where('fee_category_id', $fee_category_id)->delete();
+            for($i=0; $i < $countClass; $i++){
+                $fee_amount = new FeeCategoryAmount();
+                $fee_amount->fee_category_id = $request->fee_category_id;
+                $fee_amount->class_id = $request->class_id[$i];
+                $fee_amount->amount = $request->amount[$i];
+                $fee_amount->save();
+            }
+
+        }
 
         $notification = array(
-            'message' => 'Fee Amount Updated Successfully',
+            'message' => 'Data Updated Successfully',
             'alert-type' => 'success'
         );
 
@@ -83,5 +96,16 @@ class FeeAmountController extends Controller
         );
 
         return redirect()->route('fee.amount.view')->with($notification);
+    }
+
+    public function FeeAmountDetails($fee_category_id){
+        $data['detailsData'] = FeeCategoryAmount::where('fee_category_id', $fee_category_id)
+            ->orderBy('class_id', 'asc')
+            ->get();
+
+        $data['fee_categories'] = FeeCategory::all();
+        $data['classes'] = StudentClass::all();
+
+        return view('backend.setup.fee_amount.details_fee_amount', $data);
     }
 }
