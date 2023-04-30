@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
+use App\Http\Controllers\Backend\Setup\DesignationController;
 use App\Http\Controllers\Backend\Setup\ExamTypeController;
 use App\Http\Controllers\Backend\Setup\FeeAmountController;
 use App\Http\Controllers\Backend\Setup\FeeCategoryController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Backend\Setup\SchoolSubjectController;
 use App\Http\Controllers\backend\Setup\StudentClassController;
 use App\Http\Controllers\Backend\Setup\StudentGroupController;
 use App\Http\Controllers\backend\Setup\StudentYearController;
+use App\Http\Controllers\Backend\Student\StudentRegController;
 use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
@@ -135,11 +137,17 @@ Route::prefix('setups')->group(function (){
     Route::get('assign/subject/details/{class_id}', [AssignSubjectController::class, 'AssignSubjectDetails'])->name('assign.subject.details');
 
     // Designation All Route
-    Route::get('designation/view', [SchoolSubjectController::class, 'ViewSubject'])->name('designation.view');
-    Route::get('designation/add', [SchoolSubjectController::class, 'SubjectAdd'])->name('designation.add');
-    Route::post('designation/store', [SchoolSubjectController::class, 'SubjectStore'])->name('designation.subject');
-    Route::get('designation/edit/{id}', [SchoolSubjectController::class, 'SubjectEdit'])->name('designation.edit');
-    Route::post('designation/update/{id}', [SchoolSubjectController::class, 'SubjectUpdate'])->name('designation.subject');
-    Route::get('designation/delete/{id}', [SchoolSubjectController::class, 'SubjectDelete'])->name('designation.delete');
+    Route::get('designation/view', [DesignationController::class, 'ViewDesignation'])->name('designation.view');
+    Route::get('designation/add', [DesignationController::class, 'DesignationAdd'])->name('designation.add');
+    Route::post('designation/store', [DesignationController::class, 'DesignationStore'])->name('designation.store');
+    Route::get('designation/edit/{id}', [DesignationController::class, 'DesignationEdit'])->name('designation.edit');
+    Route::post('designation/update/{id}', [DesignationController::class, 'DesignationUpdate'])->name('update.designation');
+    Route::get('designation/delete/{id}', [DesignationController::class, 'DesignationDelete'])->name('designation.delete');
 
+});
+
+// Student Registration Routes
+Route::prefix('students')->group(function (){
+    Route::get('/reg/view', [StudentRegController::class, 'StudentRegView'])->name('student.registration.view');
+    Route::get('/reg/Add', [StudentRegController::class, 'StudentRegAdd'])->name('student.registration.add');
 });

@@ -48,7 +48,7 @@ class ExamTypeController extends Controller
         $data = ExamType::find($id);
 
         $validatedData = $request->validate([
-            'name' => 'required | unique:fee_categories'
+            'name' => 'required | unique:exam_types'
         ]);
 
         $data->name = $request->name;

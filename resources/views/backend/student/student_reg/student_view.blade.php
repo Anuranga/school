@@ -2,16 +2,14 @@
 @section('admin')
     <div class="content-wrapper">
         <div class="container-full">
-
             <!-- Main content -->
             <section class="content">
                 <div class="row">
                     <div class="col-12">
-
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">User List</h3>
-                                <a href="{{route('user.add')}}" style="float: right" class="btn btn-rounded btn-success mb-5">Add User</a>
+                                <h3 class="box-title">Student List</h3>
+                                <a href="{{route('student.registration.add')}}" style="float: right" class="btn btn-rounded btn-success mb-5">Add Student</a>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
@@ -20,24 +18,20 @@
                                         <thead>
                                         <tr>
                                             <th>SL</th>
-                                            <th>Role</th>
                                             <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Code</th>
+                                            <th>Id No</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($allData as $key  => $user)
+                                        @foreach($allData as $key  => $value)
                                             <tr>
                                                 <td width="5%">{{ $key + 1 }}</td>
-                                                <td>{{ $user->role  }}</td>
-                                                <td>{{ $user->name }}</td>
-                                                <td>{{ $user->email }}</td>
-                                                <td>{{ $user->code }}</td>
+                                                <td>{{ $value->class_id }}</td>
+                                                <td>{{ $value->year_id }}</td>
                                                 <td width="25%">
-                                                    <a href="{{route('user.edit', $user->id)}}" class="btn btn-info">Edit</a>
-                                                    <a href="{{route('user.delete', $user->id)}}" class="btn btn-info" id="delete">Delete</a>
+                                                    <a href="{{route('student.year.edit', $year->id)}}" class="btn btn-info">Edit</a>
+                                                    <a href="{{route('student.year.delete', $year->id)}}" class="btn btn-info" id="delete">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -47,14 +41,9 @@
                             </div>
                             <!-- /.box-body -->
                         </div>
-
                     </div>
-                    <!-- /.col -->
                 </div>
-                <!-- /.row -->
             </section>
-            <!-- /.content -->
-
         </div>
     </div>
 @endsection
