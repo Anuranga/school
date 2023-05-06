@@ -12,7 +12,7 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col">
-                    <form method="post" action="{{route('store.student.registration')}}" enctype="multipart/form-data">
+                    <form method="post" action="{{route('student.registration.store')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-12">

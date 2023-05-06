@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\Setup\FeeCategoryController;
 use App\Http\Controllers\Backend\Setup\SchoolSubjectController;
 use App\Http\Controllers\backend\Setup\StudentClassController;
 use App\Http\Controllers\Backend\Setup\StudentGroupController;
+use App\Http\Controllers\Backend\Setup\StudentShiftController;
 use App\Http\Controllers\backend\Setup\StudentYearController;
 use App\Http\Controllers\Backend\Student\StudentRegController;
 use App\Http\Controllers\Backend\UserController;
@@ -87,12 +88,12 @@ Route::prefix('setups')->group(function (){
     Route::get('student/group/delete/{i}', [StudentGroupController::class, 'StudentGroupDelete'])->name('student.group.delete');
 
     //Student Shift Route
-    Route::get('student/shift/view', [StudentGroupController::class, 'ViewShift'])->name('student.shift.view');
-    Route::get('student/shift/add', [StudentGroupController::class, 'StudentShiftAdd'])->name('student.shift.add');
-    Route::post('student/shift/store', [StudentGroupController::class, 'StudentShiftStore'])->name('store.student.shift');
-    Route::get('student/shift/edit/{i}', [StudentGroupController::class, 'StudentShiftEdit'])->name('student.shift.edit');
-    Route::post('student/shift/update/{i}', [StudentGroupController::class, 'StudentShiftUpdate'])->name('update.student.shift');
-    Route::get('student/shift/delete/{i}', [StudentGroupController::class, 'StudentShiftDelete'])->name('student.shift.delete');
+    Route::get('student/shift/view', [StudentShiftController::class, 'ViewShift'])->name('student.shift.view');
+    Route::get('student/shift/add', [StudentShiftController::class, 'StudentShiftAdd'])->name('student.shift.add');
+    Route::post('student/shift/store', [StudentShiftController::class, 'StudentShiftStore'])->name('store.student.shift');
+    Route::get('student/shift/edit/{i}', [StudentShiftController::class, 'StudentShiftEdit'])->name('student.shift.edit');
+    Route::post('student/shift/update/{i}', [StudentShiftController::class, 'StudentShiftUpdate'])->name('update.student.shift');
+    Route::get('student/shift/delete/{i}', [StudentShiftController::class, 'StudentShiftDelete'])->name('student.shift.delete');
 
     //Fee Category Route
     Route::get('fee/category/view', [FeeCategoryController::class, 'ViewFeeCat'])->name('fee.category.view');
@@ -150,5 +151,5 @@ Route::prefix('setups')->group(function (){
 Route::prefix('students')->group(function (){
     Route::get('/reg/view', [StudentRegController::class, 'StudentRegView'])->name('student.registration.view');
     Route::get('/reg/Add', [StudentRegController::class, 'StudentRegAdd'])->name('student.registration.add');
-    Route::get('/reg/store', [StudentRegController::class, 'StudentRegStore'])->name('student.registration.registration');
+    Route::post('/reg/store', [StudentRegController::class, 'StudentRegStore'])->name('student.registration.store');
 });

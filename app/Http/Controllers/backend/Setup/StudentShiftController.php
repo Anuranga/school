@@ -10,16 +10,16 @@ use Illuminate\Http\Request;
 
 class StudentShiftController extends Controller
 {
-    public function ViewGroup(){
+    public function ViewShift(){
         $data['allData'] = StudentShift::all();
-        return view('backend.setup.group.view_shift', $data);
+        return view('backend.setup.shift.view_shift', $data);
     }
 
-    public function StudentGroupAdd(){
-        return view('backend.setup.group.add_shift');
+    public function StudentShiftAdd(){
+        return view('backend.setup.shift.add_shift');
     }
 
-    public function StudentGroupStore(Request $request): \Illuminate\Http\RedirectResponse
+    public function StudentShiftStore(Request $request): \Illuminate\Http\RedirectResponse
     {
         $validatedData = $request->validate([
             'name' => 'required | unique:student_shifts'
@@ -37,13 +37,13 @@ class StudentShiftController extends Controller
         return redirect()->route('student.shift.view')->with($notification);
     }
 
-    public function StudentGroupEdit($id){
+    public function StudentShiftEdit($id){
         $editData = StudentShift::find($id);
 
         return view('backend.setup.shift.edit_shift', compact('editData'));
     }
 
-    public function StudentGroupUpdate(Request $request, $id): \Illuminate\Http\RedirectResponse
+    public function StudentShiftUpdate(Request $request, $id): \Illuminate\Http\RedirectResponse
     {
         $data = StudentShift::find($id);
 
@@ -62,7 +62,7 @@ class StudentShiftController extends Controller
         return redirect()->route('student.shift.view')->with($notification);
     }
 
-    public function StudentGroupDelete($id): \Illuminate\Http\RedirectResponse
+    public function StudentShiftDelete($id): \Illuminate\Http\RedirectResponse
     {
         $data = StudentShift::find($id);
         $data->delete();
