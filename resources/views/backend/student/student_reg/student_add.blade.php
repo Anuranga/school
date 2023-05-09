@@ -150,7 +150,7 @@
                                                     <select name="year_id" id="year_id" required="" class="form-control">
                                                         <option value="" selected="" disabled="">Select Year</option>
                                                         @foreach($years as $year)
-                                                        <option value="{{$year->id}}">{{$year->name}}</option>
+                                                        <option value="{{$year->id}}" >{{$year->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -166,7 +166,7 @@
                                                     <select name="class_id" id="class_id" required="" class="form-control">
                                                         <option value="" selected="" disabled="">Select Class </option>
                                                         @foreach($classes as $class)
-                                                            <option value="{{$class->id}}">{{$class->name}}</option>
+                                                            <option value="{{$class->id}}" >{{$class->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>

@@ -18,8 +18,22 @@ class StudentRegController extends Controller
 {
     public function StudentRegView()
     {
-       $data['allData'] = AssignStudent::all();
+        $data['years'] = StudentYear::all();
+        $data['classes'] = StudentClass::all();
+        $data['year_id'] = StudentYear::orderBy('id', 'asc')->first()->id;
+        $data['class_id'] = StudentClass::orderBy('id', 'asc')->first()->id;
+        $data['allData'] = AssignStudent::where('year_id', $data['year_id'])->where('class_id', $data['class_id'])->get();
        return view('backend.student.student_reg.student_view', $data);
+    }
+
+    public function StudentClassYearWise(Request $request)
+    {
+        $data['years'] = StudentYear::all();
+        $data['classes'] = StudentClass::all();
+        $data['year_id'] = $request->year_id;
+        $data['class_id'] = $request->class_id;
+        $data['allData'] = AssignStudent::where('year_id', $request->year_id)->where('class_id', $request->class_id)->get();
+        return view('backend.student.student_reg.student_view', $data);
     }
 
     public function StudentRegAdd()
@@ -98,12 +112,13 @@ class StudentRegController extends Controller
             $discount_student->discount = $request->discount;
             $discount_student->save();
 
-            $notification = array(
-                'message' => 'Student Registration Inserted Successfully',
-                'alert-type' => 'success'
-            );
-
-            return redirect()->route('student.registration.view')->with($notification);
         });
+
+        $notification = array(
+            'message' => 'Student Registration Inserted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('student.registration.view')->with($notification);
     }
 }
