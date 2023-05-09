@@ -134,7 +134,7 @@
                                                     </td>
                                                     <td>{{ $value->year_id }}</td>
                                                     <td width="25%">
-                                                        <a href="{{route('student.year.edit', $value->id)}}" class="btn btn-info">Edit</a>
+                                                        <a href="{{route('student.registration.edit', $value->student_id)}}" class="btn btn-info">Edit</a>
                                                         <a href="{{route('student.year.delete', $value->id)}}" class="btn btn-info" id="delete">Delete</a>
                                                     </td>
                                                 </tr>
