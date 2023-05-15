@@ -14,6 +14,11 @@ class AssignStudent extends Model
         return $this->belongsTo(User::class, 'student_id', 'id');
     }
 
+    public function discount(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(DiscountStudent::class, 'id', 'assign_student_id');
+    }
+
     public function student_class(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(StudentClass::class, 'class_id', 'id');
