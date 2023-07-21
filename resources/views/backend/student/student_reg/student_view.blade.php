@@ -95,8 +95,9 @@
                                                 </td>
                                                 <td>{{ $value->year_id }}</td>
                                                 <td width="25%">
-                                                    <a href="{{route('student.registration.edit', $value->student_id)}}" class="btn btn-info">Edit</a>
-                                                    <a href="{{route('student.registration.promotion', $value->student_id)}}" class="btn btn-info" id="delete">Promotion</a>
+                                                    <a title="Edit" href="{{route('student.registration.edit', $value->student_id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                                                    <a title="Promotion" href="{{route('student.registration.promotion', $value->student_id)}}" class="btn btn-primary"><i class="fa fa-check"></i></a>
+                                                    <a title="Details" target="_blank" href="{{route('student.registration.details', $value->student_id)}}" class="btn btn-danger"><i class="fa fa-eye"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -134,8 +135,9 @@
                                                     </td>
                                                     <td>{{ $value->year_id }}</td>
                                                     <td width="25%">
-                                                        <a href="{{route('student.registration.edit', $value->student_id)}}" class="btn btn-info">Edit</a>
-                                                        <a href="{{route('student.year.delete', $value->id)}}" class="btn btn-info" id="delete">Delete</a>
+                                                        <a title="Edit" href="{{route('student.registration.edit', $value->student_id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                                                        <a title="Promotion" href="{{route('student.registration.promotion', $value->student_id)}}" class="btn btn-primary"><i class="fa fa-check"></i></a>
+                                                        <a title="Details" target="_blank" href="{{route('student.registration.details', $value->student_id)}}" class="btn btn-danger"><i class="fa fa-eye"></i></a>
                                                     </td>
                                                 </tr>
                                             @endforeach

@@ -28,4 +28,14 @@ class AssignStudent extends Model
     {
         return $this->belongsTo(StudentYear::class, 'year_id', 'id');
     }
+
+    public function group(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(StudentGroup::class, 'group_id', 'id');
+    }
+
+    public function shift(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(StudentShift::class, 'shift_id', 'id');
+    }
 }
