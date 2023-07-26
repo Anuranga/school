@@ -22,7 +22,7 @@
                                                     <select name="year_id" id="year_id" required="" class="form-control">
                                                         <option value="" selected="" disabled="">Select Year</option>
                                                         @foreach($years as $year)
-                                                            <option value="{{$year->id}}" {{($year_id == $year->id) ? "selected": ""}}>{{$year->name}}</option>
+                                                            <option value="{{$year->id}}" {{(@$year_id == $year->id) ? "selected": ""}}>{{$year->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -38,7 +38,7 @@
                                                     <select name="class_id" id="class_id" required="" class="form-control">
                                                         <option value="" selected="" disabled="">Select Class </option>
                                                         @foreach($classes as $class)
-                                                            <option value="{{$class->id}}" {{($class_id == $class->id) ? "selected": ""}}>{{$class->name}}</option>
+                                                            <option value="{{@$class->id}}" {{($class_id == $class->id) ? "selected": ""}}>{{$class->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
